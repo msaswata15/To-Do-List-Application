@@ -1,6 +1,6 @@
-# To-Do List Application - Week 6 Assignment
+# To-Do List Application
 
-This is a functional To-Do List Application built as a Micro-Frontend using Vue 3, fulfilling the requirements for the TAG COE Training 2026 Week 6 assignment.
+This is a functional To-Do List application built as a micro-frontend using Vue 3. It provides a clean interface to manage personal tasks with full create, edit, complete, and delete capabilities.
 
 ## Technical Stack
 
@@ -9,18 +9,18 @@ This is a functional To-Do List Application built as a Micro-Frontend using Vue 
 - **UI Library:** Element Plus
 - **Build Tool:** Vite
 
-## Functional Requirements Implemented
+## Features
 
-- Adding a new task to the list.
-- Marking a task as "done."
-- Removing a specific task from the list.
-- Updating the text of an existing task.
+- Add new tasks to the list.
+- Mark tasks as "done" or keep them as "to-do".
+- Edit the title and description of existing tasks.
+- Remove individual tasks from the list.
 
-## Data Persistence & Performance
+## Data Persistence
 
-- All existing tasks are fetched and displayed whenever the application launches.
-- Data persists across browser refreshes using `localStorage`.
-- Newly added, edited, or deleted items reflect in the UI immediately without any delay or failure.
+- All existing tasks are loaded and displayed whenever the application launches.
+- Task data is stored in the browser using `localStorage`, so it survives page refreshes.
+- Newly added, edited, deleted, or completed tasks are reflected in the UI immediately.
 
 ## Project Setup
 
