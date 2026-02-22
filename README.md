@@ -22,6 +22,8 @@ This is a functional To-Do List application built as a micro-frontend using Vue 
 - Task data is stored in the browser using `localStorage`, so it survives page refreshes.
 - Newly added, edited, deleted, or completed tasks are reflected in the UI immediately.
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a7513a03-7e27-4386-af3f-16fc82c3064f" />
+
 ## Project Setup
 
 ```sh
