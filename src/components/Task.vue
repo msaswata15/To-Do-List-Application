@@ -47,17 +47,19 @@ function cancelEdit() {
 </script>
 
 <template>
-  <div class="task">
+  <el-card shadow="hover" class="task-card">
     <template v-if="!isEditing">
-      <h3>
-        {{ task.name }}
-      </h3>
-      <p>
-        {{ task.description }}
-      </p>
-      <div class="task-check">
-        <el-checkbox :model-value="task.completed" @change="toggleCompleted">
+      <div class="task-header">
+        <span class="task-title">{{ task.name }}</span>
+        <el-tag :type="task.completed ? 'success' : 'info'" size="small">
           {{ task.completed ? 'Done' : 'To-Do' }}
+        </el-tag>
+      </div>
+      <p class="task-desc">{{ task.description }}</p>
+      <el-divider style="margin: 12px 0;" />
+      <div class="task-footer">
+        <el-checkbox :model-value="task.completed" @change="toggleCompleted">
+          Mark as done
         </el-checkbox>
         <div class="task-actions">
           <el-button size="small" type="primary" @click="startEdit">Edit</el-button>
@@ -66,25 +68,62 @@ function cancelEdit() {
       </div>
     </template>
     <template v-else>
-      <el-input v-model="editedName" placeholder="Task title" />
-      <el-input
-        v-model="editedDescription"
-        type="textarea"
-        :rows="3"
-        placeholder="Task description"
-        style="margin-top: 8px;"
-      />
+      <el-form label-position="top">
+        <el-form-item label="Title">
+          <el-input v-model="editedName" placeholder="Task title" />
+        </el-form-item>
+        <el-form-item label="Description">
+          <el-input
+            v-model="editedDescription"
+            type="textarea"
+            :rows="3"
+            placeholder="Task description"
+          />
+        </el-form-item>
+      </el-form>
       <div class="task-actions">
         <el-button size="small" type="primary" @click="saveEdit">Save</el-button>
         <el-button size="small" @click="cancelEdit">Cancel</el-button>
       </div>
     </template>
-  </div>
+  </el-card>
 </template>
 
 <style scoped>
+.task-card {
+  height: 100%;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.task-title {
+  font-size: 16px;
+  font-weight: 700;
+  word-break: break-word;
+}
+
+.task-desc {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #606266;
+  word-break: break-word;
+}
+
+.task-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .task-actions {
   display: flex;
-  gap: 8px;
+  gap: 6px;
 }
 </style>

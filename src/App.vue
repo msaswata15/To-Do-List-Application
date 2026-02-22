@@ -5,7 +5,7 @@ import { storeToRefs } from 'pinia';
 import Task from './components/Task.vue';
 import { useTaskStore } from './stores/taskStore';
 
-const appName = ref('Task Manager');
+const appName = ref('To-Do List Application');
 
 const taskStore = useTaskStore();
 const { tasks } = storeToRefs(taskStore);
@@ -45,13 +45,15 @@ onMounted(() => {
     </div>
 
     <div class="tasks">
-      <el-row :gutter="20">
+      <el-empty v-if="tasks.length === 0" description="No tasks yet. Add one below!" />
+      <el-row v-else :gutter="20">
         <el-col
           v-for="(task, index) in tasks"
           :key="task.name + index"
           :xs="24"
           :sm="12"
           :md="8"
+          class="task-col"
         >
           <Task
             :task="task"
@@ -62,24 +64,30 @@ onMounted(() => {
       </el-row>
     </div>
 
-    <div class="add-task">
-      <h3>Add a new task</h3>
-      <el-input
-        v-model="newTask.name"
-        placeholder="Enter a title..."
-        class="add-task-input"
-      />
-      <el-input
-        v-model="newTask.description"
-        type="textarea"
-        :rows="4"
-        placeholder="Enter a description..."
-        class="add-task-textarea"
-      />
-      <el-button type="primary" class="add-task-button" @click="addTask">
-        Add Task
-      </el-button>
-    </div>
+    <el-divider />
+
+    <el-card class="add-task" shadow="never">
+      <template #header>
+        <span style="font-weight: 700;">Add a New Task</span>
+      </template>
+      <el-form label-position="top">
+        <el-form-item label="Title">
+          <el-input
+            v-model="newTask.name"
+            placeholder="Enter a title..."
+          />
+        </el-form-item>
+        <el-form-item label="Description">
+          <el-input
+            v-model="newTask.description"
+            type="textarea"
+            :rows="4"
+            placeholder="Enter a description..."
+          />
+        </el-form-item>
+        <el-button type="primary" @click="addTask">Add Task</el-button>
+      </el-form>
+    </el-card>
   </main>
 </template>
 
@@ -108,15 +116,12 @@ onMounted(() => {
   margin-top: 20px;
 }
 
-.add-task {
-  margin-top: 60px;
+.task-col {
+  margin-bottom: 20px;
 }
 
-.add-task-input,
-.add-task-textarea,
-.add-task-button {
-  width: 360px;
-  max-width: 100%;
-  margin-top: 12px;
+.add-task {
+  margin-top: 40px;
+  max-width: 480px;
 }
 </style>
