@@ -1,6 +1,6 @@
-# Task Manager - Week 6 Assignment
+# To-Do List Application - Week 6 Assignment
 
-This is a functional To-Do List application built as a Micro-Frontend using Vue 3, fulfilling the requirements for the TAG COE Training 2026 Week 6 assignment.
+This is a functional To-Do List Application built as a Micro-Frontend using Vue 3, fulfilling the requirements for the TAG COE Training 2026 Week 6 assignment.
 
 ## Technical Stack
 
